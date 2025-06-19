@@ -1,5 +1,5 @@
-import { EventManagement } from "@/components/dashboard/event-management"
-import { AppLayout } from "@/components/layout/app-layout"
+import { EventManagement } from "@/Presentation/Components/dashboard/event-management"
+import { AppLayout } from "@/Presentation/Components/layout/app-layout"
 
 export default function EventManagementPage() {
   return (

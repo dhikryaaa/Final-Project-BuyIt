@@ -1,5 +1,5 @@
-import { MyTickets } from "@/components/tickets/my-tickets"
-import { AppLayout } from "@/components/layout/app-layout"
+import { MyTickets } from "@/Presentation/Components/tickets/my-tickets"
+import { AppLayout } from "@/Presentation/Components/layout/app-layout"
 
 export default function MyTicketsPage() {
   return (

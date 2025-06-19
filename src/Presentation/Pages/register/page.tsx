@@ -2,9 +2,9 @@
 "use client"
 
 import Link from "next/link"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/Presentation/Components/ui/input"
+import { Button } from "@/Presentation/Components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/Presentation/Components/ui/card"
 import { useState } from "react"
 
 export default function RegisterPage() {
