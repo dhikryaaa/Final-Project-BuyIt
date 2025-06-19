@@ -1,15 +1,29 @@
 "use client"
 
-import { useState } from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Card, CardContent } from "@/Presentation/Components/ui/card"
+import { Button } from "@/Presentation/Components/ui/button"
+import { Badge } from "@/Presentation/Components/ui/badge"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/Presentation/Components/ui/tabs"
 import { Calendar, MapPin, Clock, QrCode, Download, X } from "lucide-react"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/Presentation/Components/ui/dialog"
+
+interface Ticket {
+  id: string
+  eventId: string
+  eventTitle: string
+  eventDate: string
+  eventTime: string
+  location: string
+  ticketType: string
+  quantity: number
+  totalPrice: number
+  status: "active" | "used"
+  purchaseDate: string
+  qrCode: string
+}
 
 // Mock data
-const tickets = [
+const tickets: Ticket[] = [
   {
     id: "TK001",
     eventId: "1",
@@ -55,12 +69,10 @@ const tickets = [
 ]
 
 export function MyTickets() {
-  const [selectedTicket, setSelectedTicket] = useState<any>(null)
-
   const activeTickets = tickets.filter((ticket) => ticket.status === "active")
   const pastTickets = tickets.filter((ticket) => ticket.status === "used")
 
-  const canCancelTicket = (ticket: any) => {
+  const canCancelTicket = (ticket: Ticket) => {
     const eventDate = new Date(ticket.eventDate)
     const now = new Date()
     const timeDiff = eventDate.getTime() - now.getTime()
@@ -74,7 +86,7 @@ export function MyTickets() {
     console.log("Cancelling ticket:", ticketId)
   }
 
-  const TicketCard = ({ ticket }: { ticket: any }) => (
+  const TicketCard = ({ ticket }: { ticket: Ticket }) => (
     <Card className="overflow-hidden">
       <CardContent className="p-0">
         <div className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground p-4">

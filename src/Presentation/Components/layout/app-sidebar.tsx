@@ -12,8 +12,8 @@ import {
   SidebarMenuItem,
   SidebarHeader,
   SidebarFooter,
-} from "@/components/ui/sidebar"
-import { useAuth } from "@/components/providers"
+} from "@/Presentation/Components/ui/sidebar"
+import { useAuth } from "@/Presentation/Components/providers"
 import Link from "next/link"
 
 export function AppSidebar() {

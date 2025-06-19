@@ -1,9 +1,9 @@
 "use client"
 
-import { SidebarTrigger } from "@/components/ui/sidebar"
-import { Button } from "@/components/ui/button"
+import { SidebarTrigger } from "@/Presentation/Components/ui/sidebar"
+import { Button } from "@/Presentation/Components/ui/button"
 import { Bell, Search } from "lucide-react"
-import { Input } from "@/components/ui/input"
+import { Input } from "@/Presentation/Components/ui/input"
 
 export function Header() {
   return (

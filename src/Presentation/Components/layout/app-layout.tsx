@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { SidebarProvider } from "@/components/ui/sidebar"
+import { SidebarProvider } from "@/Presentation/Components/ui/sidebar"
 import { AppSidebar } from "./app-sidebar"
 import { Header } from "./header"
 
