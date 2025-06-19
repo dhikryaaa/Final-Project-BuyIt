@@ -1,6 +1,5 @@
-import { EventDetail } from "@/components/events/event-detail"
-import { AppLayout } from "@/components/layout/app-layout"
-
+import { EventDetail } from "@/Presentation/Components/events/event-detail"
+import { AppLayout } from "@/Presentation/Components/layout/app-layout"
 interface EventDetailPageProps {
   params: {
     id: string

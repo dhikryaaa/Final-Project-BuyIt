@@ -1,5 +1,5 @@
-import { CreateEventForm } from "@/presentation/components/dashboard/create-event-form"
-import { AppLayout } from "@/components/layout/app-layout"
+import { CreateEventForm } from "@/Presentation/Components/dashboard/create-event-form"
+import { AppLayout } from "@/Presentation/Components/layout/app-layout"
 
 export default function CreateEventPage() {
   return (
