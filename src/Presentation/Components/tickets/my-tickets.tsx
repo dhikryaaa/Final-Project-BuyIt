@@ -55,23 +55,24 @@ const tickets = [
 ]
 
 export function MyTickets() {
-  const [selectedTicket, setSelectedTicket] = useState<any>(null)
+  // No need for selectedTicket if not used
+  // const [selectedTicket, setSelectedTicket] = useState<any>(null)
 
   const activeTickets = tickets.filter((ticket) => ticket.status === "active")
   const pastTickets = tickets.filter((ticket) => ticket.status === "used")
 
   const canCancelTicket = (ticket: any) => {
-    const eventDate = new Date(ticket.eventDate)
+    const eventDate = new Date(ticket.eventDate + "T" + (ticket.eventTime || "00:00"))
     const now = new Date()
     const timeDiff = eventDate.getTime() - now.getTime()
     const hoursDiff = timeDiff / (1000 * 3600)
-
     return hoursDiff > 24 && ticket.status === "active"
   }
 
   const handleCancelTicket = (ticketId: string) => {
     // In real app, send cancel request to API
     console.log("Cancelling ticket:", ticketId)
+    // TODO: Remove/cancel from state if connected to backend
   }
 
   const TicketCard = ({ ticket }: { ticket: any }) => (
@@ -85,7 +86,7 @@ export function MyTickets() {
                 {ticket.ticketType} • {ticket.quantity} tiket
               </p>
             </div>
-            <Badge variant={ticket.status === "active" ? "secondary" : "outline"}>
+            <Badge className={ticket.status === "active" ? "bg-secondary text-secondary-foreground" : "border"}>
               {ticket.status === "active" ? "Aktif" : "Terpakai"}
             </Badge>
           </div>
@@ -103,17 +104,14 @@ export function MyTickets() {
               })}
             </span>
           </div>
-
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Clock className="w-4 h-4" />
             <span>{ticket.eventTime} WIB</span>
           </div>
-
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <MapPin className="w-4 h-4" />
             <span>{ticket.location}</span>
           </div>
-
           <div className="pt-2 border-t">
             <div className="flex justify-between items-center">
               <div>
@@ -123,7 +121,7 @@ export function MyTickets() {
               <div className="flex gap-2">
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button variant="outline" size="sm">
+                    <Button variant="secondary" size="sm">
                       <QrCode className="w-4 h-4 mr-2" />
                       QR Code
                     </Button>
@@ -134,6 +132,7 @@ export function MyTickets() {
                     </DialogHeader>
                     <div className="text-center space-y-4">
                       <div className="w-48 h-48 bg-muted mx-auto flex items-center justify-center">
+                        {/* Replace this with a real QR Code generator */}
                         <QrCode className="w-24 h-24" />
                       </div>
                       <div>
@@ -147,7 +146,6 @@ export function MyTickets() {
                     </div>
                   </DialogContent>
                 </Dialog>
-
                 {canCancelTicket(ticket) && (
                   <Button variant="outline" size="sm" onClick={() => handleCancelTicket(ticket.id)}>
                     <X className="w-4 h-4 mr-2" />
@@ -176,7 +174,6 @@ export function MyTickets() {
           <TabsTrigger value="active">Tiket Aktif ({activeTickets.length})</TabsTrigger>
           <TabsTrigger value="past">Riwayat ({pastTickets.length})</TabsTrigger>
         </TabsList>
-
         <TabsContent value="active" className="space-y-4">
           {activeTickets.length > 0 ? (
             <div className="grid gap-4">
@@ -195,7 +192,6 @@ export function MyTickets() {
             </Card>
           )}
         </TabsContent>
-
         <TabsContent value="past" className="space-y-4">
           {pastTickets.length > 0 ? (
             <div className="grid gap-4">
