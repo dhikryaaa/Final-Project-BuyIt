@@ -96,7 +96,7 @@ export function EventDetail({ eventId }: EventDetailProps) {
         />
         <div className="absolute inset-0 bg-black/40 rounded-lg" />
         <div className="absolute bottom-4 left-4 text-white">
-          <Badge className="mb-2" variant="secondary">
+          <Badge className="mb-2">
             {event.category}
           </Badge>
           <h1 className="text-2xl md:text-4xl font-bold mb-2">{event.title}</h1>
@@ -216,7 +216,7 @@ export function EventDetail({ eventId }: EventDetailProps) {
 
                   <div className="flex justify-between items-center text-sm">
                     <span className="text-muted-foreground">Tersisa: {ticket.available} tiket</span>
-                    <Badge variant={ticket.available > 0 ? "default" : "destructive"}>
+                    <Badge className={ticket.available > 0 ? "" : "bg-destructive text-white"}>
                       {ticket.available > 0 ? "Tersedia" : "Habis"}
                     </Badge>
                   </div>
@@ -227,7 +227,6 @@ export function EventDetail({ eventId }: EventDetailProps) {
 
               <Button
                 className="w-full"
-                size="lg"
                 onClick={() => setShowBookingForm(true)}
                 disabled={event.ticketTypes.every((t) => t.available === 0)}
               >

@@ -80,7 +80,7 @@ export function EventsGrid() {
               height={200}
               className="w-full h-48 object-cover"
             />
-            <Badge className="absolute top-2 left-2" variant="secondary">
+            <Badge className="absolute top-2 left-2">
               {event.category}
             </Badge>
           </div>

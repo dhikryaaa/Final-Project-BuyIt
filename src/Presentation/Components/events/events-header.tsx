@@ -46,7 +46,7 @@ export function EventsHeader() {
             </SelectContent>
           </Select>
 
-          <Button variant="outline" size="icon">
+          <Button>
             <Filter className="w-4 h-4" />
           </Button>
         </div>

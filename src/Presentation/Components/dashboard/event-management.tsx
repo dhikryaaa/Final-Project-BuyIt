@@ -141,13 +141,13 @@ export function EventManagement() {
                   <div className="flex items-center gap-2 mb-2">
                     <h3 className="text-lg font-semibold">{event.title}</h3>
                     <Badge
-                      variant={
+                      color={
                         event.status === "active" ? "default" : event.status === "draft" ? "secondary" : "outline"
                       }
                     >
                       {event.status === "active" ? "Aktif" : event.status === "draft" ? "Draft" : "Selesai"}
                     </Badge>
-                    <Badge variant="outline">{event.category}</Badge>
+                    <Badge>{event.category}</Badge>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4">

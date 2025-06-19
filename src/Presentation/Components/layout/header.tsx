@@ -19,10 +19,10 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon">
+          <Button className="bg-transparent hover:bg-gray-100 p-2 rounded-full">
             <Bell className="w-4 h-4" />
           </Button>
-          <Button variant="destructive">Logout</Button>
+          <Button className="bg-red-600 hover:bg-red-700 text-white">Logout</Button>
         </div>
       </div>
     </header>
