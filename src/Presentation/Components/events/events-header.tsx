@@ -1,8 +1,8 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Button } from "@/Presentation/Components/ui/button"
+import { Input } from "@/Presentation/Components/ui/input"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/Presentation/Components/ui/select"
 import { Search, Filter } from "lucide-react"
 
 export function EventsHeader() {

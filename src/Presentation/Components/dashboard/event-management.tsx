@@ -1,13 +1,13 @@
 "use client"
 
 import { useState } from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Card, CardContent } from "@/Presentation/Components/ui/card"
+import { Button } from "@/Presentation/Components/ui/button"
+import { Badge } from "@/Presentation/Components/ui/badge"
+import { Input } from "@/Presentation/Components/ui/input"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/Presentation/Components/ui/select"
 import { Calendar, Users, DollarSign, Search, Plus, Edit, Eye, MoreHorizontal } from "lucide-react"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/Presentation/Components/ui/dropdown-menu"
 import Link from "next/link"
 
 // Mock data

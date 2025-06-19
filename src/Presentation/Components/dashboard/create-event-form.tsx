@@ -3,12 +3,12 @@
 import type React from "react"
 
 import { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Card, CardContent, CardHeader, CardTitle } from "@/Presentation/Components/ui/card"
+import { Button } from "@/Presentation/Components/ui/button"
+import { Input } from "@/Presentation/Components/ui/input"
+import { Label } from "@/Presentation/Components/ui/label"
+import { Textarea } from "@/Presentation/Components/ui/textarea"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/Presentation/Components/ui/select"
 import { Plus, Minus, Save, Eye } from "lucide-react"
 import { useRouter } from "next/navigation"
 
@@ -149,7 +149,7 @@ export function CreateEventForm() {
               <Label htmlFor="category">Kategori *</Label>
               <Select
                 value={eventData.category}
-                onValueChange={(value) => setEventData((prev) => ({ ...prev, category: value }))}
+                onValueChange={(value: string) => setEventData((prev) => ({ ...prev, category: value }))}
               >
                 <SelectTrigger>
                   <SelectValue placeholder="Pilih kategori" />
@@ -264,7 +264,7 @@ export function CreateEventForm() {
               <div className="flex justify-between items-center mb-4">
                 <h4 className="font-medium">Tiket {index + 1}</h4>
                 {ticketTypes.length > 1 && (
-                  <Button type="button" variant="ghost" size="sm" onClick={() => removeTicketType(ticket.id)}>
+                  <Button type="button" className="variant-ghost size-sm" onClick={() => removeTicketType(ticket.id)}>
                     <Minus className="w-4 h-4" />
                   </Button>
                 )}
@@ -317,7 +317,7 @@ export function CreateEventForm() {
             </div>
           ))}
 
-          <Button type="button" variant="outline" onClick={addTicketType} className="w-full">
+          <Button type="button" className="outline w-full" onClick={addTicketType}>
             <Plus className="w-4 h-4 mr-2" />
             Tambah Kategori Tiket
           </Button>
@@ -338,7 +338,7 @@ export function CreateEventForm() {
 
       {/* Actions */}
       <div className="flex justify-end gap-4">
-        <Button type="button" variant="outline" onClick={(e) => handleSubmit(e, true)}>
+        <Button type="button" className="outline" onClick={(e) => handleSubmit(e, true)}>
           <Save className="w-4 h-4 mr-2" />
           Simpan sebagai Draft
         </Button>

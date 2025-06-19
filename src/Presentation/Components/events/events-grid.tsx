@@ -1,8 +1,8 @@
 "use client"
 
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
+import { Card, CardContent, CardFooter, CardHeader } from "@/Presentation/Components/ui/card"
+import { Button } from "@/Presentation/Components/ui/button"
+import { Badge } from "@/Presentation/Components/ui/badge"
 import { Calendar, MapPin, Users, Clock } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"

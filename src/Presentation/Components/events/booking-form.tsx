@@ -3,12 +3,12 @@
 import type React from "react"
 
 import { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Separator } from "@/components/ui/separator"
-import { Badge } from "@/components/ui/badge"
+import { Card, CardContent, CardHeader, CardTitle } from "@/Presentation/Components/ui/card"
+import { Button } from "@/Presentation/Components/ui/button"
+import { Input } from "@/Presentation/Components/ui/input"
+import { Label } from "@/Presentation/Components/ui/label"
+import { Separator } from "@/Presentation/Components/ui/separator"
+import { Badge } from "@/Presentation/Components/ui/badge"
 import { ArrowLeft, Minus, Plus, CreditCard } from "lucide-react"
 import { useRouter } from "next/navigation"
 
