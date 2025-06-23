@@ -6,7 +6,7 @@ export default function HomePage() {
   return (
     <div className="flex h-screen items-center justify-center">
       <Link
-        href="/auth/login"
+        href="/"
         className="rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
       >
         Go to App
