@@ -1,7 +1,9 @@
+import { TicketType } from "../valueObject/TicketType";
+
 export interface Ticket {
     id: number;
     eventId: number;
-    types: string;
+    types: TicketType
     price: number;
     quantity: number;
 }
