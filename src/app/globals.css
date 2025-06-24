@@ -114,23 +114,9 @@
 
 @layer base {
   * {
-<<<<<<< HEAD
-    @apply border-border;
-=======
     @apply border-border outline-ring/50;
->>>>>>> 405c781 (refactor: refactor fe)
   }
   body {
     @apply bg-background text-foreground;
   }
 }
-<<<<<<< HEAD
-
-.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-=======
->>>>>>> 405c781 (refactor: refactor fe)
