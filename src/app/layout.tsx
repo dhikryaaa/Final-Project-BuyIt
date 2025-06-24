@@ -2,14 +2,14 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import { Providers } from "@/components/providers"
+import { AuthProvider } from "../providers/auth-provider"
+import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "EventHub - Manajemen Event & Pemesanan Tiket",
-  description: "Platform untuk mengelola event dan memesan tiket secara online",
-    generator: 'v0.dev'
+  title: "EventHub - Book Your Perfect Event",
+  description: "Professional event booking platform for seminars, concerts, and exhibitions"
 }
 
 export default function RootLayout({
@@ -18,9 +18,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="id">
+    <html lang="en">
       <body className={inter.className}>
-        <Providers>{children}</Providers>
+        <AuthProvider>
+          {children}
+          <Toaster />
+        </AuthProvider>
       </body>
     </html>
   )

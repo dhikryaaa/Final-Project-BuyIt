@@ -1,135 +1,114 @@
 "use client"
 
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
+import { useState, useEffect } from "react"
+import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Calendar, MapPin, Users, Clock } from "lucide-react"
+import { Calendar, MapPin, Users } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-
-// Mock data
-const events = [
-  {
-    id: "1",
-    title: "Konser Musik Jazz Malam",
-    description: "Nikmati malam yang penuh dengan alunan musik jazz dari musisi terbaik Indonesia",
-    image: "/placeholder.svg?height=200&width=400",
-    date: "2024-02-15",
-    time: "19:00",
-    location: "Jakarta Convention Center",
-    category: "Konser",
-    price: 150000,
-    capacity: 500,
-    sold: 320,
-    organizer: "Jazz Indonesia",
-  },
-  {
-    id: "2",
-    title: "Workshop Digital Marketing",
-    description: "Pelajari strategi digital marketing terkini untuk mengembangkan bisnis Anda",
-    image: "/placeholder.svg?height=200&width=400",
-    date: "2024-02-20",
-    time: "09:00",
-    location: "Bandung Creative Hub",
-    category: "Workshop",
-    price: 250000,
-    capacity: 100,
-    sold: 75,
-    organizer: "Digital Academy",
-  },
-  {
-    id: "3",
-    title: "Seminar Teknologi AI",
-    description: "Diskusi mendalam tentang perkembangan AI dan dampaknya terhadap industri",
-    image: "/placeholder.svg?height=200&width=400",
-    date: "2024-02-25",
-    time: "13:00",
-    location: "Surabaya Tech Center",
-    category: "Seminar",
-    price: 100000,
-    capacity: 200,
-    sold: 150,
-    organizer: "Tech Community",
-  },
-  {
-    id: "4",
-    title: "Festival Kuliner Nusantara",
-    description: "Jelajahi cita rasa kuliner tradisional dari berbagai daerah di Indonesia",
-    image: "/placeholder.svg?height=200&width=400",
-    date: "2024-03-01",
-    time: "10:00",
-    location: "Yogyakarta Cultural Park",
-    category: "Festival",
-    price: 50000,
-    capacity: 1000,
-    sold: 600,
-    organizer: "Culinary Indonesia",
-  },
-]
+import type { Event } from "@/types"
 
 export function EventsGrid() {
+  const [events, setEvents] = useState<Event[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    // Mock data - replace with actual API call
+    const mockEvents: Event[] = [
+      {
+        id: "1",
+        title: "Digital Marketing Masterclass",
+        description: "Learn advanced digital marketing strategies",
+        type: "seminar",
+        date: "2024-02-15T10:00:00Z",
+        location: "Jakarta Convention Center",
+        image: "/placeholder.svg?height=200&width=300",
+        organizer: "Marketing Pro",
+        ticketTypes: [{ id: "1", name: "Regular", price: 250000, quota: 100, available: 85 }],
+        maxTicketsPerUser: 1,
+        createdAt: "2024-01-01T00:00:00Z",
+      },
+      {
+        id: "2",
+        title: "Jazz Night with Local Artists",
+        description: "An evening of smooth jazz music",
+        type: "concert",
+        date: "2024-02-20T19:00:00Z",
+        location: "Balai Sarbini",
+        image: "/placeholder.svg?height=200&width=300",
+        organizer: "Jazz Society",
+        ticketTypes: [
+          { id: "2", name: "Regular", price: 150000, quota: 200, available: 150 },
+          { id: "3", name: "VIP", price: 300000, quota: 50, available: 30 },
+          { id: "4", name: "VVIP", price: 500000, quota: 20, available: 15 },
+        ],
+        maxTicketsPerUser: 5,
+        createdAt: "2024-01-01T00:00:00Z",
+      },
+    ]
+
+    setTimeout(() => {
+      setEvents(mockEvents)
+      setLoading(false)
+    }, 1000)
+  }, [])
+
+  if (loading) {
+    return (
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[...Array(6)].map((_, i) => (
+          <Card key={i} className="animate-pulse">
+            <div className="h-48 bg-gray-200 rounded-t-lg" />
+            <CardContent className="p-6">
+              <div className="h-4 bg-gray-200 rounded mb-2" />
+              <div className="h-4 bg-gray-200 rounded mb-4 w-3/4" />
+              <div className="space-y-2">
+                <div className="h-3 bg-gray-200 rounded" />
+                <div className="h-3 bg-gray-200 rounded" />
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    )
+  }
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       {events.map((event) => (
-        <Card key={event.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-          <div className="relative">
-            <Image
-              src={event.image || "/placeholder.svg"}
-              alt={event.title}
-              width={400}
-              height={200}
-              className="w-full h-48 object-cover"
-            />
-            <Badge className="absolute top-2 left-2" variant="secondary">
-              {event.category}
-            </Badge>
+        <Card key={event.id} className="card-hover border-0 shadow-lg overflow-hidden">
+          <div className="relative h-48">
+            <Image src={event.image || "/placeholder.svg"} alt={event.title} fill className="object-cover" />
+            <Badge className="absolute top-4 left-4 bg-purple-600 capitalize">{event.type}</Badge>
           </div>
+          <CardContent className="p-6">
+            <h3 className="text-xl font-bold text-gray-900 mb-3">{event.title}</h3>
 
-          <CardHeader className="pb-2">
-            <h3 className="font-semibold text-lg line-clamp-2">{event.title}</h3>
-            <p className="text-sm text-muted-foreground line-clamp-2">{event.description}</p>
-          </CardHeader>
+            <div className="space-y-2 mb-4">
+              <div className="flex items-center text-gray-600">
+                <Calendar className="h-4 w-4 mr-2" />
+                <span className="text-sm">{new Date(event.date).toLocaleDateString("id-ID")}</span>
+              </div>
+              <div className="flex items-center text-gray-600">
+                <MapPin className="h-4 w-4 mr-2" />
+                <span className="text-sm">{event.location}</span>
+              </div>
+              <div className="flex items-center text-gray-600">
+                <Users className="h-4 w-4 mr-2" />
+                <span className="text-sm">{event.organizer}</span>
+              </div>
+            </div>
 
-          <CardContent className="space-y-2">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Calendar className="w-4 h-4" />
-              <span>
-                {new Date(event.date).toLocaleDateString("id-ID", {
-                  weekday: "long",
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
+            <div className="flex items-center justify-between">
+              <span className="text-lg font-bold text-purple-600">
+                From Rp {event.ticketTypes[0]?.price.toLocaleString("id-ID")}
               </span>
-            </div>
-
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Clock className="w-4 h-4" />
-              <span>{event.time} WIB</span>
-            </div>
-
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <MapPin className="w-4 h-4" />
-              <span>{event.location}</span>
-            </div>
-
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Users className="w-4 h-4" />
-              <span>
-                {event.sold}/{event.capacity} tiket terjual
-              </span>
-            </div>
-
-            <div className="pt-2">
-              <p className="text-lg font-bold text-primary">Rp {event.price.toLocaleString("id-ID")}</p>
+              <Button asChild size="sm">
+                <Link href={`/events/${event.id}`}>View Details</Link>
+              </Button>
             </div>
           </CardContent>
-
-          <CardFooter>
-            <Button asChild className="w-full">
-              <Link href={`/events/${event.id}`}>Lihat Detail</Link>
-            </Button>
-          </CardFooter>
         </Card>
       ))}
     </div>

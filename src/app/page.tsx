@@ -1,16 +1,19 @@
-'use client'
-
-import Link from "next/link"
+import { Header } from "@/components/layout/header"
+import { Hero } from "@/components/sections/hero"
+import { FeaturedEvents } from "@/components/sections/featured-events"
+import { EventCategories } from "@/components/sections/event-categories"
+import { Footer } from "@/components/layout/footer"
 
 export default function HomePage() {
   return (
-    <div className="flex h-screen items-center justify-center">
-      <Link
-        href="/pages/dashboard"
-        className="rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
-      >
-        Go to App
-      </Link>
+    <div className="min-h-screen">
+      <Header />
+      <main>
+        <Hero />
+        <EventCategories />
+        <FeaturedEvents />
+      </main>
+      <Footer />
     </div>
   )
 }
