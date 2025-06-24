@@ -1,5 +1,5 @@
 import { createClient } from "../../../supabase/client";
-import { Event } from "@/entities/models/Event";
+import { Event } from "../../entities/models/Event";
 
 const supabase = createClient();
 

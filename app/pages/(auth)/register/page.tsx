@@ -1,5 +1,5 @@
 import { RegisterForm } from "../../../components/auth/register-form"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@//components/ui/card"
 import Link from "next/link"
 import Image from "next/image"
 

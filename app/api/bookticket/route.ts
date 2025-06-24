@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { MyTicketStatus } from "@/entities/valueObject/MyTicketStatus";
-import { createClient } from "../../../supabase/client";
-import { bookTicket } from "@/infrastructure/repositories/bookTicket";
+import { MyTicketStatus } from "../../../src/entities/valueObject/MyTicketStatus";
+import { createClient } from "../../../supabase/server";
+import { bookTicket } from "../../../src/infrastructure/repositories/addMyTicketToDB";
 
 export interface BookTicketInput {
   eventId: number;
@@ -11,13 +11,12 @@ export interface BookTicketInput {
   quantity: number;
   ticketId: number;
   status: MyTicketStatus;
-  purchaseDate: Date;
+  purchasedDate: Date;
   totalPrice: number;
 }
 
-const supabase = createClient();
-
 export async function POST(req: NextRequest) {
+  const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {
@@ -26,10 +25,9 @@ export async function POST(req: NextRequest) {
 
   const body = await req.json();
 
-  // Jangan ambil userId dari body, ambil dari user.id
   const input = {
     ...body,
-    userId: user.id, // Ambil dari Supabase Auth
+    userId: user.id,
   };
 
   try {

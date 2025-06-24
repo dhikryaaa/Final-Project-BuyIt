@@ -1,5 +1,5 @@
 import { LoginForm } from "../../../components/auth/login-form"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@//components/ui/card"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -33,7 +33,7 @@ export default function LoginPage() {
               <LoginForm />
               <div className="mt-6 text-center">
                 <p className="text-sm text-gray-600">
-                  Don't have an account?{" "}
+                  Don&apos;t have an account?{" "}
                   <Link href="/auth/register" className="text-purple-600 hover:text-purple-700 font-medium">
                     Sign up
                   </Link>

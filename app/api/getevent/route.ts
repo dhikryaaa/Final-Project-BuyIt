@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { getAllEventsUseCase } from "@/app/use-cases/get-event";
-import { eventRepository } from "@/infrastructure/repositories/getEventFromDB";
+import { getAllEventsUseCase } from "../../../src/app/use-cases/get-event";
+import { eventRepository } from "../../../src/infrastructure/repositories/getEventFromDB";
 
 export async function GET() {
   try {

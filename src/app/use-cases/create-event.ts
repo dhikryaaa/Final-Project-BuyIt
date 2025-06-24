@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { CreateEvent } from "@/infrastructure/repositories/addEventToDB";
+import { CreateEvent } from "../../infrastructure/repositories/addEventToDB";
 
 export async function createEventHandler(req: NextRequest) {
   try {

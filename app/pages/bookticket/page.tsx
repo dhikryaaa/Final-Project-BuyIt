@@ -78,9 +78,9 @@ export default function BookTicketPage() {
       const res = await fetch('/api/bookticket', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include', 
         body: JSON.stringify({
           eventId: selectedEvent?.id,
-          userId,
           types: ticketType,
           quantity,
           status: "active",

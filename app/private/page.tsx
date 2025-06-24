@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
-
 import { createClient } from '../../supabase/server'
+import Link from 'next/link'
 
 export default async function PrivatePage() {
   const supabase = await createClient()
@@ -10,5 +10,13 @@ export default async function PrivatePage() {
     redirect('auth/login')
   }
 
-  return <p>Hello {data.user.email}</p>
+  // Tambahkan tombol logout (pakai link ke /auth/logout jika ingin SSR, atau bisa pakai client component jika ingin JS)
+  return (
+    <div>
+      <p>Hello {data.user.email}</p>
+      <form action="/auth/logout" method="post">
+        <button type="submit" className="bg-red-600 text-white px-4 py-2 rounded mt-4">Logout</button>
+      </form>
+    </div>
+  )
 }

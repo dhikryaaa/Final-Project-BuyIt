@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createTicket } from "@/infrastructure/repositories/addTicketToDB";
+import { createTicket } from "../../infrastructure/repositories/addTicketToDB";
 
 export async function createTicketHandler(req: NextRequest) {
     try {
