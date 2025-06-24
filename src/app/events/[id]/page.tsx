@@ -9,17 +9,19 @@ interface EventPageProps {
   }
 }
 
-export default function EventPage({ params }: EventPageProps) {
+export default async function EventPage({ params }: EventPageProps) {
+  const { id } = params
+
   return (
     <div className="min-h-screen">
       <Header />
       <main className="container mx-auto px-4 py-8">
         <div className="grid lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
-            <EventDetails eventId={params.id} />
+            <EventDetails eventId={id} />
           </div>
           <div className="lg:col-span-1">
-            <BookingSection eventId={params.id} />
+            <BookingSection eventId={id} />
           </div>
         </div>
       </main>
