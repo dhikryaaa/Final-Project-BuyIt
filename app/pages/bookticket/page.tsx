@@ -14,6 +14,14 @@ interface Event {
   description?: string;
 }
 
+export interface BookTicketInput {
+  eventId: number;
+  userId: string;
+  types: "Regular" | "VIP" | "VVIP";
+  quantity: number;
+  status?: "active" | "expired" | "canceled";
+}
+
 const ticketTypeMap: Record<string, ("Regular" | "VIP" | "VVIP")[]> = {
   Seminar: ["Regular", "VIP", "VVIP"],
   Concert: ["Regular", "VIP", "VVIP"],
@@ -75,6 +83,9 @@ export default function BookTicketPage() {
           userId,
           types: ticketType,
           quantity,
+          status: "active",
+          purchaseDate: new Date(),
+          totalPrice: 0,
         }),
       });
       const data = await res.json();
@@ -85,6 +96,13 @@ export default function BookTicketPage() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    setUserId('');
+    setUserEmail('');
+    window.location.href = '/auth/login'; // atau reload
   };
 
   return (
@@ -168,6 +186,7 @@ export default function BookTicketPage() {
           <p>{error}</p>
         </div>
       )}
+      <button onClick={handleLogout} className="bg-red-600 text-white px-4 py-2 rounded">Logout</button>
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import { MyTicketStatus } from "@/entities/valueObject/MyTicketStatus";
 import { createClient } from "../../../supabase/client";
 
 export interface BookTicketInput {
@@ -5,6 +6,9 @@ export interface BookTicketInput {
   userId: string;
   types: "Regular" | "VIP" | "VVIP";
   quantity: number;
+  status: MyTicketStatus;
+  purchaseDate: Date;
+  totalPrice: number;
 }
 
 export async function bookTicket(input: BookTicketInput) {
@@ -58,14 +62,15 @@ export async function bookTicket(input: BookTicketInput) {
       types: input.types,
       quantity: input.quantity,
       userId: input.userId,
-      status: "active",
+      status: input.status ?? "active", // update di sini
       purchaseDate: new Date().toISOString(),
       totalPrice: ticket.price * input.quantity,
     })
-    .select()
-    .single();
+  .select()
+  .single();
 
   if (myTicketError) {
+    console.error(myTicketError);
     throw new Error("Gagal menyimpan tiket user");
   }
 

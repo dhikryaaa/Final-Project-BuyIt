@@ -1,3 +1,5 @@
+import { MyTicketStatus } from "../valueObject/MyTicketStatus";
+
 export interface MyTicket{
     id: number;
     eventId: number;
@@ -6,6 +8,6 @@ export interface MyTicket{
     quantity: number;
     totalPrice: number;
     purchaseDate: Date;
-    status: string;
+    status: MyTicketStatus;
     userId: string;
 }
