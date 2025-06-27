@@ -1,19 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-
-import { MyTicketStatus } from "../../../src/entities/valueObject/MyTicketStatus";
 import { createClient } from "../../../supabase/server";
 import { bookTicket } from "../../../src/infrastructure/repositories/addMyTicketToDB";
-
-export interface BookTicketInput {
-  eventId: number;
-  userId: string;
-  types: "Regular" | "VIP" | "VVIP";
-  quantity: number;
-  ticketId: number;
-  status: MyTicketStatus;
-  purchasedDate: Date;
-  totalPrice: number;
-}
 
 export async function POST(req: NextRequest) {
   const supabase = await createClient();

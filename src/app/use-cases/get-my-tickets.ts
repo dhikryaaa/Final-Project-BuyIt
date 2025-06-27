@@ -11,7 +11,7 @@ export async function getMyTicketsHandler(req: NextRequest) {
   try {
     const tickets = await getMyTicketsByUserId(user.id);
     return NextResponse.json({ success: true, data: tickets });
-  } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: error }, { status: 500 });
   }
 } 

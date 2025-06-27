@@ -1,11 +1,5 @@
 import { createClient } from "../../../supabase/client";
-
-export interface TicketCreateInput {
-  eventId: number;
-  types: "Regular" | "VIP" | "VVIP";
-  price?: number | null;
-  quantity?: number | null;
-}
+import { TicketCreateInput } from "../../infrastructure/interface/ticketCreateInput";
 
 export async function createTicket(input: TicketCreateInput) {
   if (!input.eventId || input.eventId <= 0) {
