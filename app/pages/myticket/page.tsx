@@ -59,7 +59,7 @@ export default function MyTicketsPage() {
       }
     };
     fetchTickets();
-  }, []);
+  }, [supabase.auth]);
 
   const getStatusBadge = (status: string) => {
     switch (status.toLowerCase()) {
