@@ -121,7 +121,7 @@ export default function EventPage() {
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
-    window.location.href = '/auth/login';
+    window.location.href = '/pages/auth/login';
   };
 
   return (

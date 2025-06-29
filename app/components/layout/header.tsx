@@ -13,17 +13,24 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { useAuth } from "../../providers/auth-provider"
 import { Menu, X, User, LogOut, Ticket, Settings } from "lucide-react"
+import { createClient } from "../../../supabase/client"
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const { user, logout } = useAuth()
+  const { user } = useAuth()
 
   const navigation = [
-    { name: "Home", href: "/" },
-    { name: "Events", href: "/events" },
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
+    { name: "Home", href: "/pages/dashboard" },
+    { name: "Book Ticket", href: "/pages/bookticket" },
+    { name: "My Ticket", href: "/pages/myticket" },
   ]
+
+  const supabase = createClient()
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    window.location.href = '/pages/auth/login';
+  };
 
   return (
     <header className="bg-white shadow-sm border-b">
@@ -83,7 +90,7 @@ export function Header() {
                     Settings
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={logout}>
+                  <DropdownMenuItem onClick={handleLogout}>
                     <LogOut className="mr-2 h-4 w-4" />
                     Log out
                   </DropdownMenuItem>
@@ -92,10 +99,10 @@ export function Header() {
             ) : (
               <div className="flex items-center space-x-2">
                 <Button variant="ghost" asChild>
-                  <Link href="/auth/login">Login</Link>
+                  <Link href="/pages/auth/login">Login</Link>
                 </Button>
                 <Button asChild>
-                  <Link href="/auth/register">Sign Up</Link>
+                  <Link href="/pages/auth/register">Sign Up</Link>
                 </Button>
               </div>
             )}

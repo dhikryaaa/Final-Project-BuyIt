@@ -6,7 +6,7 @@ export async function getMyTicketsHandler(req: NextRequest) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    return NextResponse.json({ error: 'Silahkan Login untuk melihat tiket' }, { status: 401 });
   }
   try {
     const tickets = await getMyTicketsByUserId(user.id);
