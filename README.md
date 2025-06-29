@@ -30,11 +30,11 @@ Sistem dibangun menggunakan pendekatan Clean Architecture dan monorepo berbasis 
 
 ```mermaid
 flowchart TD
-    A[Pengguna] --> B[BuyIt Frontend App<br/>(Next.js + TypeScript)]
-    B --> C[Backend Application<br/>(Use Cases, Domain Logic)]
-    C --> D[Supabase (Auth & DB)]
-    C --> E[Payment Gateway (Planned)]
-    C --> F[Email Service (Planned)]
+    A[Pengguna] --> B[Frontend BuyIt - Next.js]
+    B --> C[Backend App - Use Cases dan Logika]
+    C --> D[Supabase - Auth dan DB]
+    C --> E[Payment Gateway - Rencana]
+    C --> F[Email Service - Rencana]
 ```
 
 
@@ -47,9 +47,9 @@ Struktur arsitektur dibagi dalam 4 layer utama:
 
 ```mermaid
 graph TD
-    UI[Presentation Layer<br/>(Next.js Pages)] --> AL[Application Layer<br/>(API route.ts)]
-    AL --> DL[Domain Layer<br/>(Entities, Use Cases)]
-    DL --> IL[Infrastructure Layer<br/>(Supabase Client, External APIs)]
+    UI[Presentation Layer - Next.js Pages] --> AL[Application Layer - API route]
+    AL --> DL[Domain Layer - Entities dan Use Cases]
+    DL --> IL[Infrastructure Layer - Supabase Client dan API]
 ```
 
 
@@ -145,3 +145,4 @@ sequenceDiagram
 - **Supabase**: Layanan backend (Auth, DB, API)
 - **DTO**: Format pertukaran data antar-layer
 - **SSR**: Server-Side Rendering
+
