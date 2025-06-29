@@ -1,12 +1,19 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { createClient } from '../../../supabase/client';
 
 interface TicketInput {
   types: string;
   price: string;
   quantity: string;
+}
+
+interface EventResult {
+  message: string;
+  data?: {
+    id: string;
+  };
 }
 
 export default function EventPage() {

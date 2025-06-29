@@ -5,7 +5,7 @@ import { createClient } from '../../../supabase/client';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, MapPin, Clock, Ticket, User, LogOut, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import { Calendar, MapPin, Clock, Ticket, User, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import { Header } from "../../components/layout/header";
 
 interface Ticket {
