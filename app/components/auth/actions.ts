@@ -3,7 +3,7 @@
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
-import { createClient } from '../../../../supabase/server'
+import { createClient } from '../../../supabase/server'
 
 export async function login(formData: FormData) {
   const supabase = await createClient()
@@ -22,7 +22,7 @@ export async function login(formData: FormData) {
   }
 
   revalidatePath('/', 'layout')
-  redirect('/')
+  redirect('/pages/dashboard')
 }
 
 export async function signup(formData: FormData) {
@@ -42,5 +42,5 @@ export async function signup(formData: FormData) {
   }
 
   revalidatePath('/', 'layout')
-  redirect('/')
+  redirect('/pages/auth/login')
 }
