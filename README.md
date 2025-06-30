@@ -2,7 +2,7 @@
 # BuyIt – Web E-Commerce Platform for Event Ticketing
 
 BuyIt adalah sebuah platform digital berbasis web yang dirancang untuk memfasilitasi proses penjualan dan distribusi tiket acara seperti konser, seminar, bootcamp, dan pameran.
-Apabila you penasaran dengan dokumentasi arc42-nya, klik link berikut  Klik [:3](https://docs.google.com/document/d/1h9t22fyRit858Dz_-mGAcl4kly9ew7ldRTk748H_vR0/edit?usp=sharing) untuk melihat dokumentasi drivenya lebih lengkap
+Apabila you penasaran dengan dokumentasi arc42-nya,Klik [:3](https://docs.google.com/document/d/1h9t22fyRit858Dz_-mGAcl4kly9ew7ldRTk748H_vR0/edit?usp=sharing) untuk melihat dokumentasi drivenya lebih lengkap
 
 Website yang sudah di deployment juga bisa kamu kunjungin nih klik [disini](https://final-project-buy-it.vercel.app/)
 
