@@ -1,3 +1,4 @@
+import { isQuotaAvailable, isUserPurchaseMaxTicket, isTicketActive } from "../../entities/models/Ticket";
 import { createClient } from "../../../supabase/client";
 import { BookTicketInput } from "../../infrastructure/interface/bookTicketInput";
 
@@ -11,11 +12,25 @@ export async function bookTicket(input: BookTicketInput) {
     .eq("types", input.types)
     .single();
 
+  const { data: event, error: eventError } = await supabase
+    .from("event")
+    .select("date")
+    .eq("id", input.eventId)
+    .single();
+
   if (ticketError || !ticket) {
     throw new Error("Tiket tidak ditemukan");
   }
 
-  if (ticket.quantity < input.quantity) {
+  if (eventError || !event) {
+    throw new Error("Event tidak ditemukan");
+  }
+
+  if (!isTicketActive(new Date(), new Date(event.date))) {
+    throw new Error("Tiket sudah tidak aktif");
+  }
+
+  if (!isQuotaAvailable(ticket, input.quantity)) {
     throw new Error("Kuota tiket tidak mencukupi");
   }
 
@@ -26,7 +41,8 @@ export async function bookTicket(input: BookTicketInput) {
     .eq("userId", input.userId);
 
   const totalUserTickets = (userTickets || []).reduce((sum, t) => sum + (t.quantity || 0), 0);
-  if (totalUserTickets + input.quantity > 5) {
+
+  if (!isUserPurchaseMaxTicket(totalUserTickets, input.quantity)) {
     throw new Error("Maksimal pembelian 5 tiket per event");
   }
 
@@ -58,8 +74,6 @@ export async function bookTicket(input: BookTicketInput) {
     console.error(myTicketError);
     throw new Error("Gagal menyimpan tiket user");
   }
-
-  console.log('user di API:', input.userId);
 
   return myTicket;
 } 

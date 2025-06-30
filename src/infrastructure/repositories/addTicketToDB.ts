@@ -1,4 +1,5 @@
 import { createClient } from "../../../supabase/client";
+import { isTicketTypesValid } from "../../entities/models/Ticket";
 import { TicketCreateInput } from "../../infrastructure/interface/ticketCreateInput";
 
 export async function createTicket(input: TicketCreateInput) {
@@ -6,7 +7,7 @@ export async function createTicket(input: TicketCreateInput) {
     throw new Error("Invalid eventId: must be a positive number");
   }
 
-  if (!input.types || !["Regular", "VIP", "VVIP"].includes(input.types)) {
+  if (!isTicketTypesValid(input.types)) {
     throw new Error(`Invalid ticket type: ${input.types}. Must be one of: Regular, VIP, VVIP`);
   }
 
